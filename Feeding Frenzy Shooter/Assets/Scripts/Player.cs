@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
     bool minMass;
     bool collided;
     Enemy collidedEnemy;
-    public CameraController cam;
+    public PlayerMovement playerMovement;
 
     private void FixedUpdate()
     {
@@ -44,12 +44,14 @@ public class Player : MonoBehaviour
             return;
         }
         transform.localScale = Vector3.Scale(transform.localScale, new Vector3(0.99f, 0.99f, 0.99f));
+        playerMovement.speed *= 0.99f;
         gun.DecreaseBulletScale();
     }
 
     private void IncreaseMass()
     {
         transform.localScale = Vector3.Scale(transform.localScale, new Vector3(1.01f, 1.01f, 0f));
+        playerMovement.speed *= 1.01f;
         gun.IncreaseBulletScale();
     }
 

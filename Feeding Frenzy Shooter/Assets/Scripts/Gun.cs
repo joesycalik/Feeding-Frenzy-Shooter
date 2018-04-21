@@ -21,10 +21,12 @@ public class Gun : MonoBehaviour {
     public void IncreaseBulletScale()
     {
         bulletScale = Vector3.Scale(bulletScale, new Vector3(1.01f, 1.01f, 0f));
+        speed *= 1.01f;
     }
 
     public void DecreaseBulletScale()
     {
         bulletScale = Vector3.Scale(bulletScale, new Vector3(0.99f, 0.99f, 0f));
+        speed *= 0.99f;
     }
 }

@@ -185,7 +185,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gun: {fileID: 114809728109594872}
-  cam: {fileID: 0}
+  playerMovement: {fileID: 114976917028488248}
 --- !u!114 &114809728109594872
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -198,6 +198,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 1298107301031394, guid: d18a9068ef15fec4082ac2df54085e71, type: 2}
+  bulletScale: {x: 0, y: 0, z: 0}
   speed: 25
 --- !u!114 &114976917028488248
 MonoBehaviour:
