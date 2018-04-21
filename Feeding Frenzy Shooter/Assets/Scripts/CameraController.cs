@@ -24,11 +24,11 @@ public class CameraController : MonoBehaviour
 
     public void IncreaseSize()
     {
-        cam.orthographicSize = cam.orthographicSize * 1.1f;
+        cam.orthographicSize = cam.orthographicSize * 1.01f;
     }
 
     public void DecreaseSize()
     {
-        cam.orthographicSize = cam.orthographicSize * 0.9f;
+        cam.orthographicSize = cam.orthographicSize * 0.99f;
     }
 }

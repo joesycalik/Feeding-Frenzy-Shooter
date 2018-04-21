@@ -54,7 +54,7 @@ Transform:
   m_GameObject: {fileID: 1717361334224496}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3.5, y: 3.5, z: 1}
   m_Children: []
   m_Father: {fileID: 4531483633282102}
   m_RootOrder: 0
@@ -67,7 +67,7 @@ Transform:
   m_GameObject: {fileID: 1396270255224914}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.6257334, y: 3.0466735, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.9, y: 0.9, z: 1}
   m_Children:
   - {fileID: 4036018755689192}
   m_Father: {fileID: 0}
@@ -117,11 +117,11 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.15, y: -0.15}
-      - {x: 0, y: 0.15}
-      - {x: 0.15, y: -0.15}
+    - - {x: -0.56, y: -0.55}
+      - {x: 0, y: 0.55}
+      - {x: 0.56, y: -0.55}
       - {x: 0, y: 0}
-      - {x: -0.15, y: -0.15}
+      - {x: -0.56, y: -0.55}
 --- !u!114 &114412411680716064
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -133,7 +133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b739ad16739bd3a4ca9996079d9051c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 1
+  moveSpeed: 2
   dir: {x: 0, y: 0, z: 0}
   turnSpeed: 0
 --- !u!114 &114702785255211604
@@ -147,8 +147,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a5feaf310c4a044dada2e480215b143, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collided: 0
-  collidedEnemy: {fileID: 0}
 --- !u!212 &212661359426506258
 SpriteRenderer:
   m_ObjectHideFlags: 1

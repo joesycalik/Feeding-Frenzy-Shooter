@@ -36,6 +36,6 @@ public class Unit : MonoBehaviour
 
     public void IncreaseMass()
     {
-        transform.localScale = Vector3.Scale(transform.localScale, new Vector3(1.0005f, 1.0005f, 0f));
+        transform.localScale = Vector3.Scale(transform.localScale, new Vector3(1.01f, 1.01f, 0f));
     }
 }

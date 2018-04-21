@@ -12,13 +12,13 @@ public class EnemyMovement : MonoBehaviour
     void Start()
     {
         dir = Vector3.up;
-        //InvokeRepeating("Start1", 0f, 5f);
+        InvokeRepeating("Start1", 0f, 5f);
     }
-    //void Start1()
-    //{
-    //    play = true;
-    //    direction = new Vector3(Random.Range(-3.0f, 3.0f), Random.Range(-4.0f, 4.0f), 0); //random position in x and y
-    //}
+    void Start1()
+    {
+        play = true;
+        direction = new Vector3(Random.Range(-3.0f, 3.0f), Random.Range(-4.0f, 4.0f), 0); //random position in x and y
+    }
     void Update()
     {
         currentPos = transform.position;//current position of gameObject
@@ -35,16 +35,16 @@ public class EnemyMovement : MonoBehaviour
         targetAngle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 90; //angle of rotation of gameobject
         transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, targetAngle), turnSpeed * Time.deltaTime); //rotation from current direction to target direction
     }
-    //void OnCollisionEnter2D()
-    //{
+    void OnCollisionEnter2D()
+    {
 
-    //    CancelInvoke();//stop call to start1 method
-    //    direction = new Vector3(Random.Range(-3.0f, 3.0f), Random.Range(-4.0f, 4.0f), 0); //again provide random position in x and y
-    //    play = true;
+        CancelInvoke();//stop call to start1 method
+        direction = new Vector3(Random.Range(-3.0f, 3.0f), Random.Range(-4.0f, 4.0f), 0); //again provide random position in x and y
+        play = true;
 
-    //}
-    //void OnCollisionExit2D()
-    //{
-    //    InvokeRepeating("Start1", 2f, 5f);
-    //}
+    }
+    void OnCollisionExit2D()
+    {
+        InvokeRepeating("Start1", 2f, 5f);
+    }
 }
