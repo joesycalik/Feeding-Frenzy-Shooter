@@ -42,17 +42,21 @@ public class SpawnEnemies : MonoBehaviour {
 
     void SpawnEnemy()
     {
+        float screenOffset = 10;
         time = 0;
         float spawnY = Random.Range
-                (Camera.main.ScreenToWorldPoint(new Vector2(0 - Screen.height, 0)).y, 
-                Camera.main.ScreenToWorldPoint(new Vector2(Screen.height, Screen.height * 2)).y);
+                (Camera.main.ScreenToWorldPoint(new Vector2(0 - Screen.height * screenOffset, 0)).y, 
+                Camera.main.ScreenToWorldPoint(new Vector2(Screen.height * screenOffset, Screen.height * screenOffset)).y);
         float spawnX = Random.Range
-            (Camera.main.ScreenToWorldPoint(new Vector2(-Screen.width, 0)).x, 
-            Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, Screen.width * 2)).x);
+            (Camera.main.ScreenToWorldPoint(new Vector2(-Screen.width * screenOffset, 0)).x, 
+            Camera.main.ScreenToWorldPoint(new Vector2(Screen.width * screenOffset, Screen.width * screenOffset)).x);
 
         Vector2 spawnPosition = new Vector2(spawnX, spawnY);
         GameObject enemyObject = Instantiate(enemy, spawnPosition, Quaternion.identity);
         enemyObject.transform.Rotate(0f, 0f, Random.Range(0f, 360f));
+
+        float randomScale = Random.Range(0.7f, 5f);
+        enemyObject.transform.localScale = new Vector3(randomScale, randomScale, 0f);
     }
 
     //Sets the random time between minTime and maxTime

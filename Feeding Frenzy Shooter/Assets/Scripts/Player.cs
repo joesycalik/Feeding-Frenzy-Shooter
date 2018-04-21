@@ -38,14 +38,14 @@ public class Player : Unit
         }
         transform.localScale = Vector3.Scale(transform.localScale, new Vector3(0.99f, 0.99f, 0.99f));
         gun.DecreaseBulletScale();
-        cam.DecreaseSize();
+        //cam.DecreaseSize();
     }
 
     private new void IncreaseMass()
     {
-        transform.localScale = Vector3.Scale(transform.localScale, new Vector3(1.01f, 1.01f, 0f));
+        transform.localScale = Vector3.Scale(transform.localScale, new Vector3(1.1f, 1.1f, 0f));
         gun.IncreaseBulletScale();
-        cam.IncreaseSize();
+        //cam.IncreaseSize();
     }
 
     void OnTriggerEnter2D(Collider2D col)
