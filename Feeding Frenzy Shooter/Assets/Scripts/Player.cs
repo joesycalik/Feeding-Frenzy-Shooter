@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     bool minMass;
     bool collided;
     Enemy collidedEnemy;
+    public CameraController cam;
 
     private void FixedUpdate()
     {
@@ -35,17 +36,22 @@ public class Player : MonoBehaviour
 
     private void DepleteMass()
     {
-        transform.localScale = Vector3.Scale(transform.localScale, new Vector3(0.99f, 0.99f, 0.99f));
         if (transform.localScale.x < 0.5f)
         {
             transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
             minMass = true;
+            return;
         }
+        transform.localScale = Vector3.Scale(transform.localScale, new Vector3(0.99f, 0.99f, 0.99f));
+        gun.DecreaseBulletScale();
+        cam.DecreaseSize();
     }
 
     private void IncreaseMass()
     {
         transform.localScale = Vector3.Scale(transform.localScale, new Vector3(1.01f, 1.01f, 0f));
+        gun.IncreaseBulletScale();
+        cam.IncreaseSize();
     }
 
     void OnTriggerEnter2D(Collider2D col)
