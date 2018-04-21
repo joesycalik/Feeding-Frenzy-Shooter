@@ -8,7 +8,7 @@ public class EnemyMovement : MonoBehaviour {
 
     private void Start()
     {
-        speed = Random.Range(0.5f, 3.5f);
+        speed = Random.Range(0.5f, 12f);
     }
     private void FixedUpdate()
     {
@@ -16,5 +16,10 @@ public class EnemyMovement : MonoBehaviour {
         float y = Input.GetAxis("Vertical");
 
         transform.Translate(Vector2.up * speed * Time.deltaTime);
+    }
+
+    private void LateUpdate()
+    {
+        speed = LevelManager.instance.camSize * 0.8f;
     }
 }

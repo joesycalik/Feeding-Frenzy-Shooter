@@ -28,24 +28,22 @@ public class Player : Unit
         CheckCollision();
     }
 
-    private new void DepleteMass()
+    override
+   public void DepleteMass()
     {
-        if (transform.localScale.x < 0.5f)
-        {
-            transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
-            minMass = true;
-            return;
-        }
         transform.localScale = Vector3.Scale(transform.localScale, new Vector3(0.99f, 0.99f, 0.99f));
         playerMovement.speed *= 0.99f;
         gun.DecreaseBulletScale();
+        LevelManager.instance.score -= 1;
     }
-
-    private new void IncreaseMass()
+    
+    override
+    public void IncreaseMass()
     {
         transform.localScale = Vector3.Scale(transform.localScale, new Vector3(1.01f, 1.01f, 0f));
         playerMovement.speed *= 1.01f;
         gun.IncreaseBulletScale();
+        LevelManager.instance.score += 1;
     }
 
     void OnTriggerEnter2D(Collider2D col)
