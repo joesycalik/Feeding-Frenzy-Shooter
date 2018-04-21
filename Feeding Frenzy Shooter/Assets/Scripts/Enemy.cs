@@ -1,17 +1,25 @@
 ﻿using UnityEngine;
 
-public class Enemy : MonoBehaviour {
-    public void DepleteMass()
+public class Enemy : Unit {
+
+    void OnTriggerEnter2D(Collider2D col)
     {
-        transform.localScale = Vector3.Scale(transform.localScale, new Vector3(0.95f, 0.95f, 0f));
-        if (transform.localScale.x < 0.35f)
+        //all projectile colliding game objects should be tagged "Enemy" or whatever in inspector but that tag must be reflected in the below if conditional
+        if (col.gameObject.tag == "Enemy")
         {
-            Destroy(this.gameObject);
+            collided = true;
+            collidedEnemy = col.GetComponentInParent<Enemy>();
+        }
+        else if (col.gameObject.tag == "Playter")
+        {
+            collided = true;
+            collidedEnemy = col.GetComponentInParent<Player>();
         }
     }
 
-    public void IncreaseMass()
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        transform.localScale = Vector3.Scale(transform.localScale, new Vector3(1.01f, 1.01f, 0f));
+        collided = false;
+        collidedEnemy = null;
     }
 }
