@@ -32,6 +32,7 @@ public class Player : MonoBehaviour
             IncreaseMass();
             collidedEnemy.DepleteMass();
         }
+        Debug.Log("Player local scale x: " + transform.localScale.x);
     }
 
     private void DepleteMass()
@@ -44,14 +45,12 @@ public class Player : MonoBehaviour
         }
         transform.localScale = Vector3.Scale(transform.localScale, new Vector3(0.99f, 0.99f, 0.99f));
         gun.DecreaseBulletScale();
-        cam.DecreaseSize();
     }
 
     private void IncreaseMass()
     {
         transform.localScale = Vector3.Scale(transform.localScale, new Vector3(1.01f, 1.01f, 0f));
         gun.IncreaseBulletScale();
-        cam.IncreaseSize();
     }
 
     void OnTriggerEnter2D(Collider2D col)
