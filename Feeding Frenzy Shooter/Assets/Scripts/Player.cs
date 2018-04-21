@@ -1,13 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Player : MonoBehaviour
+public class Player : Unit
 {
     public Gun gun;
     float shootDelay;
     bool minMass;
-    bool collided;
-    Enemy collidedEnemy;
     public PlayerMovement playerMovement;
 
     private void FixedUpdate()
@@ -27,15 +25,10 @@ public class Player : MonoBehaviour
             }
         }
 
-        if (collided)
-        {
-            IncreaseMass();
-            collidedEnemy.DepleteMass();
-        }
-        Debug.Log("Player local scale x: " + transform.localScale.x);
+        CheckCollision();
     }
 
-    private void DepleteMass()
+    private new void DepleteMass()
     {
         if (transform.localScale.x < 0.5f)
         {
@@ -48,7 +41,7 @@ public class Player : MonoBehaviour
         gun.DecreaseBulletScale();
     }
 
-    private void IncreaseMass()
+    private new void IncreaseMass()
     {
         transform.localScale = Vector3.Scale(transform.localScale, new Vector3(1.01f, 1.01f, 0f));
         playerMovement.speed *= 1.01f;
