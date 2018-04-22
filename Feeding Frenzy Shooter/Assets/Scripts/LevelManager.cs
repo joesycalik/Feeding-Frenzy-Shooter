@@ -1,13 +1,15 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System.IO;
 
 public class LevelManager : MonoBehaviour
 {
     public List<Enemy> enemies;
     public Player player;
     public float camSize;
-    public Text scoreText, hitsText;
+    public Text scoreText, highScoreText;
     public int score;
 
     //Instance and connection variables
@@ -40,10 +42,16 @@ public class LevelManager : MonoBehaviour
     private void Start()
     {
         GameManager.instance.score = 0;
+        scoreText.text = "Score: 0";
+        highScoreText.text = "High Score: " + GameManager.instance.highScore;
     }
 
     private void Update()
     {
+        if (!player)
+        {
+            Lose();
+        }
         for (int i = enemies.Count - 1; i >= 0; i--)
         {
             if (enemies[i] && player && enemies[i].transform.localScale.x <= player.transform.localScale.x / 5)
@@ -51,7 +59,28 @@ public class LevelManager : MonoBehaviour
                 enemies[i].Kill();
             }
         }
-        scoreText.text = "Score: " + LevelManager.instance.score;
+        scoreText.text = "Score: " + score;
 
+        if (score > GameManager.instance.highScore)
+        {
+            GameManager.instance.highScore = score;
+        }
+
+        highScoreText.text = "High Score: " + GameManager.instance.highScore;
+    }
+
+    void Lose()
+    {
+        GameManager.instance.score = score;
+        if (score == GameManager.instance.highScore)
+        {
+            GameManager.instance.SaveScore();
+        }
+        SceneManager.LoadScene("EndScreen");
+    }
+
+    public void ReturnToMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 }

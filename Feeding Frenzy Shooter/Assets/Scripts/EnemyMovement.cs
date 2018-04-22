@@ -16,10 +16,28 @@ public class EnemyMovement : MonoBehaviour {
         float y = Input.GetAxis("Vertical");
 
         transform.Translate(Vector2.up * speed * Time.deltaTime);
+
+        checkWrapMovement();
     }
 
-    private void LateUpdate()
+    void checkWrapMovement()
     {
-        speed = LevelManager.instance.camSize * 0.8f;
+        if (transform.position.y > LevelManager.instance.camSize * 2)
+        {
+            transform.position = new Vector2(transform.position.x, -LevelManager.instance.camSize * 2);
+        }
+        else if (transform.position.y < -LevelManager.instance.camSize * 2)
+        {
+            transform.position = new Vector2(transform.position.x, LevelManager.instance.camSize * 2);
+        }
+
+        if (transform.position.x > LevelManager.instance.camSize * 2)
+        {
+            transform.position = new Vector2(-LevelManager.instance.camSize * 2, -transform.position.y);
+        }
+        else if (transform.position.x < -LevelManager.instance.camSize * 2)
+        {
+            transform.position = new Vector2(LevelManager.instance.camSize * 2, transform.position.y);
+        }
     }
 }

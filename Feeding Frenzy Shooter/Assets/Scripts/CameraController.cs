@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class CameraController : MonoBehaviour
 {
@@ -9,6 +8,7 @@ public class CameraController : MonoBehaviour
     Camera cam;
     public float minSize;
     Spawner spawner;
+    float camIncreaseThreshold;
 
     // Use this for initialization
     void Start()
@@ -17,24 +17,18 @@ public class CameraController : MonoBehaviour
         offset = transform.position - player.transform.position;
         cam = GetComponentInParent<Camera>();
         spawner = GetComponentInChildren<Spawner>();
+        camIncreaseThreshold = LevelManager.instance.player.originalScale;
+        LevelManager.instance.camSize = cam.orthographicSize;
+        spawner.AdjustSpawnPositions(cam.orthographicSize);
     }
 
-    // LateUpdate is called after Update each frame
-    void Update()
+    private void LateUpdate()
     {
-        if (player)
-        {
-            // Set the position of the camera's transform to be the same as the player's, but offset by the calculated offset distance.
-            //transform.position = player.transform.position + offset;
-            cam.orthographicSize = player.transform.localScale.x * 7.5f;
-            LevelManager.instance.camSize = cam.orthographicSize;
-            spawner.AdjustSpawnPositions(cam.orthographicSize);
-        }
-        else
-        {
-            GameManager.instance.score = LevelManager.instance.score;
-            SceneManager.LoadScene("EndScreen");
-        }
-        
+        //if (LevelManager.instance.player.transform.localScale.x >= camIncreaseThreshold)
+        //{
+        //    camIncreaseThreshold = LevelManager.instance.player.transform.localScale.x;
+        //    LevelManager.instance.camSize = cam.orthographicSize;
+        //    spawner.AdjustSpawnPositions(cam.orthographicSize);
+        //}
     }
 }

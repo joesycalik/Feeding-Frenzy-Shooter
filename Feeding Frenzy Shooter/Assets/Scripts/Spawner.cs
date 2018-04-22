@@ -32,6 +32,10 @@ public class Spawner : MonoBehaviour
 
     void FixedUpdate()
     {
+        //if (LevelManager.instance.enemies.Count > 40)
+        //{
+        //    return;
+        //}
 
         //Counts up
         time += Time.deltaTime;

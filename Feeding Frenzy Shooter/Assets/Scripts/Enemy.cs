@@ -3,6 +3,14 @@
 public class Enemy : Unit
 {
 
+    public void LateUpdate()
+    {
+        if (OutOfView())
+        {
+            CheckSize();
+        }
+    }
+
     void OnTriggerEnter2D(Collider2D col)
     {
         //all projectile colliding game objects should be tagged "Enemy" or whatever in inspector but that tag must be reflected in the below if conditional
@@ -31,6 +39,37 @@ public class Enemy : Unit
         {
             Kill();
         }
+    }
+
+    public void CheckSize()
+    {
+        if (LevelManager.instance.player && transform.localScale.x > LevelManager.instance.player.transform.localScale.x * 3.5)
+        {
+            Kill();
+        }
+    }
+
+    bool OutOfView()
+    {
+        if (transform.position.y > 11)
+        {
+            return true;
+        }
+        else if (transform.position.y < -11)
+        {
+            return true;
+        }
+
+        if (transform.position.x > 14)
+        {
+            return true;
+        }
+        else if (transform.position.x < -14)
+        {
+            return true;
+        }
+
+        return false;
     }
 
     public void Kill()

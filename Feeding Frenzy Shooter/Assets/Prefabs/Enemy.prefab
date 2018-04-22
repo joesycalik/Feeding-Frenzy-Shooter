@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 4036018755689192}
   - component: {fileID: 212661359426506258}
   m_Layer: 0
-  m_Name: Player Sprite
+  m_Name: Enemy Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -52,13 +52,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1717361334224496}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3.5, y: 3.5, z: 1}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children: []
   m_Father: {fileID: 4531483633282102}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
 --- !u!4 &4531483633282102
 Transform:
   m_ObjectHideFlags: 1
@@ -117,11 +117,11 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.56, y: -0.55}
-      - {x: 0, y: 0.55}
-      - {x: 0.56, y: -0.55}
-      - {x: 0, y: 0}
-      - {x: -0.56, y: -0.55}
+    - - {x: -0.53, y: -0.7}
+      - {x: -0.039, y: 0.7}
+      - {x: 0.53, y: -0.7}
+      - {x: -0.04, y: -0.2}
+      - {x: -0.53, y: -0.7}
 --- !u!114 &114448823586324078
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -145,6 +145,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a5feaf310c4a044dada2e480215b143, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  collided: 0
+  collidedEnemy: {fileID: 0}
 --- !u!212 &212661359426506258
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -179,12 +181,12 @@ SpriteRenderer:
   m_SortingLayerID: 1805004787
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 1d43d44a9e6e9194daf726924f424f53, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 97066153d907df04f80b837da5a21474, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.32, y: 0.32}
+  m_Size: {x: 5.59, y: 7.26}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

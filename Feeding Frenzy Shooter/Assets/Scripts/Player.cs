@@ -6,52 +6,55 @@ public class Player : Unit
     public Gun gun;
     float shootDelay;
     public int hits;
-    float minMass = 0.35f;
+    public float originalScale;
     public PlayerMovement playerMovement;
 
     private void Start()
     {
         hits = 0;
+        originalScale = transform.localScale.x;
     }
 
     private void FixedUpdate()
     {
-        if (Input.GetMouseButton(0) && shootDelay == 0)
+        if (Input.GetMouseButton(0))
         {
             gun.Shoot();
             shootDelay = 0.3f;
-            DepleteMass(false);
-        }
-        if (shootDelay > 0)
-        {
-            shootDelay -= 0.1f;
-            if (shootDelay < 0)
-            {
-                shootDelay = 0;
-            }
+            DepleteMass(true);
         }
 
         CheckCollision();
     }
 
-    
-   public void DepleteMass(bool hit = true)
+    override
+   public void DepleteMass()
     {
-        if (transform.localScale.x < minMass)
+        if (transform.localScale.x < originalScale / 3.5f)
         {
-            Destroy(this);
+            Destroy(this.gameObject);
         }
-        transform.localScale = Vector3.Scale(transform.localScale, new Vector3(0.99f, 0.99f, 0.97f));
-        playerMovement.speed *= 0.99f;
+        transform.localScale = Vector3.Scale(transform.localScale, new Vector3(0.90f, 0.90f, 0f));
+        playerMovement.speed *= 1.001f;
         gun.DecreaseBulletScale();
-        LevelManager.instance.score -= 1;
     }
-    
+
+    public void DepleteMass(bool shoot)
+    {
+        if (transform.localScale.x < originalScale / 2)
+        {
+            Destroy(this.gameObject);
+        }
+        transform.localScale = Vector3.Scale(transform.localScale, new Vector3(0.9995f, 0.9995f, 0));
+        playerMovement.speed *= 1.001f;
+        gun.DecreaseBulletScale();
+    }
+
     override
     public void IncreaseMass()
     {
-        transform.localScale = Vector3.Scale(transform.localScale, new Vector3(1.01f, 1.01f, 0f));
-        playerMovement.speed *= 1.01f;
+        transform.localScale = Vector3.Scale(transform.localScale, new Vector3(1.015f, 1.015f, 0f));
+        playerMovement.speed *= 0.995f;
         gun.IncreaseBulletScale();
         LevelManager.instance.score += 1;
     }
