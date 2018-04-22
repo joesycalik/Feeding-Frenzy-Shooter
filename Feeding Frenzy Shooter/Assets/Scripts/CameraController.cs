@@ -25,7 +25,7 @@ public class CameraController : MonoBehaviour
         if (player)
         {
             // Set the position of the camera's transform to be the same as the player's, but offset by the calculated offset distance.
-            transform.position = player.transform.position + offset;
+            //transform.position = player.transform.position + offset;
             cam.orthographicSize = player.transform.localScale.x * 7.5f;
             LevelManager.instance.camSize = cam.orthographicSize;
             spawner.AdjustSpawnPositions(cam.orthographicSize);

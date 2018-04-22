@@ -5,16 +5,22 @@ public class Player : Unit
 {
     public Gun gun;
     float shootDelay;
-    bool minMass;
+    public int hits;
+    float minMass = 0.35f;
     public PlayerMovement playerMovement;
+
+    private void Start()
+    {
+        hits = 0;
+    }
 
     private void FixedUpdate()
     {
-        if (Input.GetMouseButton(0) && !minMass && shootDelay == 0)
+        if (Input.GetMouseButton(0) && shootDelay == 0)
         {
             gun.Shoot();
             shootDelay = 0.3f;
-            DepleteMass();
+            DepleteMass(false);
         }
         if (shootDelay > 0)
         {
@@ -28,10 +34,14 @@ public class Player : Unit
         CheckCollision();
     }
 
-    override
-   public void DepleteMass()
+    
+   public void DepleteMass(bool hit = true)
     {
-        transform.localScale = Vector3.Scale(transform.localScale, new Vector3(0.99f, 0.99f, 0.99f));
+        if (transform.localScale.x < minMass)
+        {
+            Destroy(this);
+        }
+        transform.localScale = Vector3.Scale(transform.localScale, new Vector3(0.99f, 0.99f, 0.97f));
         playerMovement.speed *= 0.99f;
         gun.DecreaseBulletScale();
         LevelManager.instance.score -= 1;

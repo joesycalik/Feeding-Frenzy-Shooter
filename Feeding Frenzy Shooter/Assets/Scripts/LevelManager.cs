@@ -7,7 +7,7 @@ public class LevelManager : MonoBehaviour
     public List<Enemy> enemies;
     public Player player;
     public float camSize;
-    public Text scoreText;
+    public Text scoreText, hitsText;
     public int score;
 
     //Instance and connection variables
@@ -40,7 +40,6 @@ public class LevelManager : MonoBehaviour
     private void Start()
     {
         GameManager.instance.score = 0;
-        scoreText = GetComponentInChildren<Text>();
     }
 
     private void Update()
@@ -53,5 +52,6 @@ public class LevelManager : MonoBehaviour
             }
         }
         scoreText.text = "Score: " + LevelManager.instance.score;
+
     }
 }

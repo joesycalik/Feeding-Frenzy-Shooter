@@ -63,9 +63,10 @@ public class Spawner : MonoBehaviour
         float randScale = Random.Range(LevelManager.instance.player.transform.localScale.x * 0.5f, LevelManager.instance.player.transform.localScale.x * 3f);
         enemyObject.transform.localScale = new Vector3(randScale, randScale, 0f);
 
-        Vector2 randPos = new Vector2(Random.Range(transform.position.x - 10, transform.position.x + 10), Random.Range(transform.position.y - 10, transform.position.y + 10));
+        //Vector2 randPos = new Vector2(Random.Range(transform.position.x - 10, transform.position.x + 10), Random.Range(transform.position.y - 10, transform.position.y + 10));
+        Vector2 playerPos = LevelManager.instance.player.transform.position;
         // get direction you want to point at
-        Vector2 direction = (randPos - (Vector2)transform.position).normalized;
+        Vector2 direction = (playerPos - (Vector2)transform.position).normalized;
         // set vector of transform directly
         transform.up = direction;
 

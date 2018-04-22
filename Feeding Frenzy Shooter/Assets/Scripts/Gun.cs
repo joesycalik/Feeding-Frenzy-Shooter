@@ -20,13 +20,13 @@ public class Gun : MonoBehaviour {
 
     public void IncreaseBulletScale()
     {
-        bulletScale = Vector3.Scale(bulletScale, new Vector3(1.02f, 1.02f, 0f));
-        speed *= 1.02f;
+        bulletScale = Vector3.Scale(LevelManager.instance.player.transform.localScale, new Vector3(0.75f, 0.75f, 0f));
+        speed = LevelManager.instance.player.playerMovement.speed * 3;
     }
 
     public void DecreaseBulletScale()
     {
-        bulletScale = Vector3.Scale(bulletScale, new Vector3(0.98f, 0.98f, 0f));
-        speed *= 0.98f;
+        bulletScale = Vector3.Scale(LevelManager.instance.player.transform.localScale, new Vector3(0.75f, 0.75f, 0f));
+        speed = LevelManager.instance.player.playerMovement.speed * 3;
     }
 }
