@@ -46,4 +46,14 @@ public class Menu : MonoBehaviour {
         settings.SetActive(false);
         mainUIButtons.SetActive(true);
     }
+
+    public void ReturnToMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    public void Quit()
+    {
+        Application.Quit();
+    }
 }
