@@ -5,9 +5,10 @@ using UnityEngine.UI;
 public class Menu : MonoBehaviour {
 
     public bool gameOverScreen;
-    public Text scoreText, highScoreText;
+    public Text scoreText, highScoreText, volumeText;
     public GameObject howToPlay, settings;
     public GameObject mainUIButtons;
+    public float volume;
 
 	public void Play()
     {
@@ -20,6 +21,7 @@ public class Menu : MonoBehaviour {
         {
             scoreText.text = "Score: " + GameManager.instance.score;
             highScoreText.text = "High Score: " + GameManager.instance.highScore;
+            volumeText.text = "Volume: " + SoundManager.instance.source.volume;
         }
     }
 
@@ -50,6 +52,12 @@ public class Menu : MonoBehaviour {
     public void ReturnToMenu()
     {
         SceneManager.LoadScene("MainMenu");
+    }
+
+    public void ChangeVolume(float newVol)
+    {
+        volumeText.text = "Volume: " + (int)(newVol * 100);
+        SoundManager.instance.ChangeVolume(newVol);
     }
 
     public void Quit()

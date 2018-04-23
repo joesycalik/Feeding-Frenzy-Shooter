@@ -1,11 +1,9 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 
 public class SoundManager : MonoBehaviour
 {
-    AudioSource source;
+    public AudioSource source;
     public AudioClip backgroundMusic;
-    public Text volumeText;
 
     //Instance and connection variables
     private static SoundManager m_instance = null;
@@ -44,7 +42,6 @@ public class SoundManager : MonoBehaviour
 
     public void ChangeVolume(float newVol)
     {
-        volumeText.text = "Volume: " + (int) (newVol * 100);
         source.volume = newVol;
     }
 }

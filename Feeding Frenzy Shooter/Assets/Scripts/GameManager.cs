@@ -38,7 +38,10 @@ public class GameManager : MonoBehaviour
     public int highScore;
     private void Start()
     {
-        LoadScore();
+        if (Application.platform != RuntimePlatform.WebGLPlayer)
+        {
+            LoadScore();
+        }
     }
 
     void LoadScore()

@@ -52,7 +52,7 @@ public class PlayerMovement : MonoBehaviour {
             transform.position = new Vector2(transform.position.x, LevelManager.instance.camSize);
         }
 
-        float horBound = LevelManager.instance.camSize + (LevelManager.instance.camSize / 3);
+        float horBound = Camera.main.orthographicSize * Screen.width / Screen.height;
 
         if (transform.position.x > horBound)
         {

@@ -72,7 +72,7 @@ public class LevelManager : MonoBehaviour
     void Lose()
     {
         GameManager.instance.score = score;
-        if (score == GameManager.instance.highScore)
+        if (score == GameManager.instance.highScore && Application.platform != RuntimePlatform.WebGLPlayer)
         {
             GameManager.instance.SaveScore();
         }
