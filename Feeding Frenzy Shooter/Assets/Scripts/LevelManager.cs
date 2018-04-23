@@ -48,10 +48,6 @@ public class LevelManager : MonoBehaviour
 
     private void Update()
     {
-        if (!player)
-        {
-            Lose();
-        }
         for (int i = enemies.Count - 1; i >= 0; i--)
         {
             if (enemies[i] && player && enemies[i].transform.localScale.x <= player.transform.localScale.x / 5)
@@ -69,13 +65,18 @@ public class LevelManager : MonoBehaviour
         highScoreText.text = "High Score: " + GameManager.instance.highScore;
     }
 
+    private void LateUpdate()
+    {
+        if (!player)
+        {
+            Lose();
+        }
+    }
+
     void Lose()
     {
         GameManager.instance.score = score;
-        if (score == GameManager.instance.highScore && Application.platform != RuntimePlatform.WebGLPlayer)
-        {
-            GameManager.instance.SaveScore();
-        }
+        enemies.Clear();
         SceneManager.LoadScene("EndScreen");
     }
 

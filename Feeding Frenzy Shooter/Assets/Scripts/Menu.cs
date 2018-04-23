@@ -19,9 +19,16 @@ public class Menu : MonoBehaviour {
     {
         if (gameOverScreen)
         {
-            scoreText.text = "Score: " + GameManager.instance.score;
-            highScoreText.text = "High Score: " + GameManager.instance.highScore;
-            volumeText.text = "Volume: " + SoundManager.instance.source.volume;
+            if (scoreText && highScoreText)
+            {
+                scoreText.text = "Score: " + GameManager.instance.score;
+                highScoreText.text = "High Score: " + GameManager.instance.highScore;
+            }
+            
+            if (volumeText)
+            {
+                volumeText.text = "Volume: " + SoundManager.instance.source.volume;
+            }
         }
     }
 

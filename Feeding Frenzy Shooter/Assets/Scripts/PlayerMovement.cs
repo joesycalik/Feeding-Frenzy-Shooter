@@ -17,17 +17,17 @@ public class PlayerMovement : MonoBehaviour {
             transform.Translate(x * (speed * speedRamp) * Time.deltaTime, y * (speed * speedRamp) * Time.deltaTime, 0, Space.World);
         } else if (Input.GetKey(KeyCode.LeftShift))
         {
-            if (speedRamp <= 2.5f)
+            if (speedRamp <= 1.5f)
             {
                 speedRamp += 0.1f;
             } else
             {
-                speedRamp = 2.5f;
+                speedRamp = 1.5f;
             }
             transform.Translate(x * (speed * speedRamp) * Time.deltaTime, y * (speed * speedRamp) * Time.deltaTime, 0, Space.World);
         } else
         {
-            transform.Translate(x * speed * Time.deltaTime, y * speed * Time.deltaTime, 0, Space.World);
+            transform.Translate(x * (speed) * Time.deltaTime, y * (speed) * Time.deltaTime, 0, Space.World);
         }
         checkWrapMovement();
 

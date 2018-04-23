@@ -30,7 +30,7 @@ public class Player : Unit
     override
    public void DepleteMass()
     {
-        if (transform.localScale.x < originalScale / 3.5f)
+        if (transform.localScale.x < originalScale / 2)
         {
             Destroy(this.gameObject);
         }
@@ -56,7 +56,7 @@ public class Player : Unit
         transform.localScale = Vector3.Scale(transform.localScale, new Vector3(1.015f, 1.015f, 0f));
         playerMovement.speed *= 0.995f;
         gun.IncreaseBulletScale();
-        LevelManager.instance.score += 1;
+        LevelManager.instance.score += 2;
     }
 
     void OnTriggerEnter2D(Collider2D col)
